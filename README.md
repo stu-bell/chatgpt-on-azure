@@ -73,7 +73,7 @@ If you prefer to deploy using Azure DevOps pipelines, use the azure-pipelines.ym
 # Manage user access
 
 [Manually invite users](https://learn.microsoft.com/en-us/azure/static-web-apps/authentication-custom?tabs=aad%2Cinvitations#manage-roles)
-The app config assumes you'll send app user invites with a custom role called 'invited'. This will only allow users you've explicitly invited to use the app. 
+The app config assumes you'll send app user invites with a custom role called `invited`. This will only allow users you've explicitly invited to use the app. 
 
 If you wish to automate role assignments, rather than manually sending invites, implement an Azure Function to assign the 'invited' role to users that are allowed to use the app. [Manage Roles with an Azure Function](https://learn.microsoft.com/en-us/azure/static-web-apps/authentication-custom?tabs=aad%2Cfunction#manage-roles)
 
