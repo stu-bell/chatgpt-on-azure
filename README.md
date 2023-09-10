@@ -56,18 +56,18 @@ Resource group is like a folder in your azure account that will contain the app.
 
 Once the Azure Templates have successfully completed, you'll need to deploy the app using GitHub Actions (or Azure DevOps).
 
-To use GitHub actions, [fork this repository](https://github.com/stu-bell/chatgpt-on-azure/fork) and set up GitHub actions.
+1. To use GitHub actions, [fork this repository](https://github.com/stu-bell/chatgpt-on-azure/fork) and set up GitHub actions.
 
 [![Fork me on GitHub](/docs/images/forkmeongh.png)](https://github.com/stu-bell/chatgpt-on-azure/fork)
 
-1. In the Azure Portal(https://portal.azure.com), locate the Static Web App resource created by the templates. On the overview page, click Manage Deployment Token, and copy the token.
+2. In the [Azure Portal(https://portal.azure.com), locate the Static Web App resource created by the templates. On the overview page, click Manage Deployment Token, and copy the token.
 TODO link to deployment token
-2. In your fork of the repo, go to settings > Secrets and Variables > Actions. Create a new secret called `DEPLOY_TOKEN` and paste the token you copied from the Static Web App in the previous step. 
-TODO link to forking and actions secrets
-3. In your fork of the repo, go to Actions > Enable Workflow for this Fork.
-4. From the left panel, select the workflow named 'Azure Static Web Apps CI/CD' > Run workflow
-5. Once the deployment has completed, in the Static Web App Azure Portal page, find the web app's URL. Open this URL in your browser and you should be presented with the webapp's login page. To add yourself as a user to the webapp, see section below on managing user access.
+3. Save the deployment token in GitHub as a secret: In your fork of the repo, go to settings > Secrets and Variables > Actions. Create a new secret called `DEPLOY_TOKEN` and paste the token you copied from the Static Web App in the previous step. [More details on creating GitHub secrets](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository)
+4. In your fork of the repo, go to Actions > Enable Workflow for this Fork.
+5. From the left panel, select the workflow named 'Azure Static Web Apps CI/CD' > Run workflow
+6. Once the deployment has completed, in the Static Web App Azure Portal page, find the web app's URL. Open this URL in your browser and you should be presented with the webapp's login page. To add yourself as a user to the webapp, see section below on managing user access.
 TODO screenshot / link
+
 If you prefer to deploy using Azure DevOps pipelines, use the azure-pipelines.yml file and save the deployment token as a secret pipeline variable.
 
 # Manage user access
