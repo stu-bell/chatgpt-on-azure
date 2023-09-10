@@ -54,13 +54,15 @@ Resource group is like a folder in your azure account that will contain the app.
 
 ## Web app deployment with GitHub Actions
 
-Once the Azure Templates have successfully completed, you'll need to deploy the app using GitHub Actions (or Azure DevOps). 
+Once the Azure Templates have successfully completed, you'll need to deploy the app using GitHub Actions (or Azure DevOps).
 
-[![Fork me on GitHub](/docs/images/githubfork.png)](https://github.com/stu-bell/chatgpt-on-azure/fork)
+To use GitHub actions, [fork this repository](https://github.com/stu-bell/chatgpt-on-azure/fork) and set up GitHub actions.
+
+[![Fork me on GitHub](/docs/images/forkmeongh.png)](https://github.com/stu-bell/chatgpt-on-azure/fork)
 
 1. In the Azure Portal(https://portal.azure.com), locate the Static Web App resource created by the templates. On the overview page, click Manage Deployment Token, and copy the token.
 TODO link to deployment token
-2. Fork this GitHub repository. In your forked copy of the repo, go to settings > Secrets and Variables > Actions. Create a new secret called `DEPLOY_TOKEN` and paste the token you copied from the Static Web App in the previous step. 
+2. In your fork of the repo, go to settings > Secrets and Variables > Actions. Create a new secret called `DEPLOY_TOKEN` and paste the token you copied from the Static Web App in the previous step. 
 TODO link to forking and actions secrets
 3. Run the GitHub Actions Workflow. TODO link how to do this from a fork.
 4. Once the deployment has completed, in the Static Web App Azure Portal page, find the web app's URL. Open this URL in your browser and you should be presented with the webapp's login page. To add yourself as a user to the webapp, see section below on managing user access.
