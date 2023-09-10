@@ -30,7 +30,13 @@ To deploy this app:
 1. Grant users access 
 
 ## Azure Templates
-There are two options based on whether you can create an Azure OpenAI resource or not. 
+There are three deployment options based on the type of GPT backend you want to use:
+
+| Backkend                    | Pre-requisites                                                                                     | Deploy to Azure                                                                                                                                                                                                                               |
+| ---                         | ---                                                                                                | ---                                                                                                                                                                                                                                           |
+| New Azure OAI resource      | Ability to create an Azure OpenAI resource: https://aka.ms/oai/access                              | [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fstu-bell%2Fchatgpt-on-azure%2Fmain%2Finfrastructure%2Farm%2FNewAzureOAI.json)      |
+| Existing Azure OAI resource | API Endpoint and Key to an existing Azure OpenAI resource. The resource owner should provide these | [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fstu-bell%2Fchatgpt-on-azure%2Fmain%2Finfrastructure%2Farm%2FExistingAzureOAI.json) |
+| OpenAI's API                | An [OpenAI API key](https://platform.openai.com/account/api-keys)                                  | [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fstu-bell%2Fchatgpt-on-azure%2Fmain%2Finfrastructure%2Farm%2FOpenAIBackend.json)    |
 
 At the time of writing, to deploy an Azure OpenAI resource, access must be requested at https://aka.ms/oai/access . Once Microsoft has granted access, you will be able to deploy the AzureOpenAI template. 
 
