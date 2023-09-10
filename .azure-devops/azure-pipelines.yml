@@ -1,0 +1,21 @@
+# Deploy to Azure Static Web App Service
+# Requires a deployment_token variable, obtained from the Azure SWA resource. 
+# Add steps that build, run tests, deploy, and more: https://aka.ms/yaml
+
+trigger:
+- deploy
+
+pool:
+  vmImage: ubuntu-latest
+  
+steps:  
+- checkout: self  
+  submodules: true
+  
+- task: AzureStaticWebApp@0  
+  inputs:  
+    app_location: '/webapp'
+    output_location: '/dist'
+    api_location: '/webapp/api'
+  env:  
+    azure_static_web_apps_api_token: $(DEPLOY_TOKEN)  

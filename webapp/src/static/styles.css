@@ -1,0 +1,335 @@
+html, body {  
+  margin: 0;  
+  padding: 0;  
+  border: 0;  
+  height: 100%; /* ensures they take up full height */  
+  box-sizing: border-box; /* ensures padding and border are included in element's total width and height */  
+  font-family: "Montserrat", sans-serif;
+} 
+
+body, .container {  
+  overscroll-behavior: none;  
+} 
+
+.container {
+  display: flex;
+  padding: 0;
+  background-color: #fff;
+  height: 100vh; /* Full height */
+  width: 100%; /* Full width */
+}
+
+/* ==== Chat =====*/
+
+.chat {
+  flex: 1;
+}
+
+.header-chat {
+  background-color: #fff;
+  height: 7vh; /* change to desired percentage */
+  box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.chat .header-chat .icon {
+  color: #515151;
+  font-size: 14pt;
+}
+
+.chat .header-chat .name {
+  margin: 0 0 0 20px;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13pt;
+  color: #515151;
+}
+
+.chat .header-chat .right {
+  position: absolute;
+  right: 40px;
+}
+
+.chat .messages-chat {
+ padding-left: 35px;  
+  padding-right: 35px;  
+  height: calc(99.5vh - 7vh - 15vh); /* view height, minus header, minus footer */
+  overflow-y: auto; /* Enable vertical scroll when content overflows */
+}
+
+.chat .messages-chat .message {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.chat .messages-chat .message .photo {
+  display: block;
+  width: 45px;
+  height: 45px;
+  background: #e6e7ed;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.chat .messages-chat .text {
+  margin: 0 35px;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.text-only {
+  margin-left: 45px;
+}
+
+.time {
+  /* showing message times beneath messages */
+  font-size: 10px;
+  color: lightgrey;
+  margin-bottom: 10px;
+  margin-left: 85px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.request {
+  float: right;
+  margin-right: 0px !important;
+  margin-left: auto; /* flexbox alignment rule */
+}
+
+.request .text {
+  background-color: #e3effd !important;
+}
+
+.footer-chat {
+  display: flex;  
+  justify-content: space-between; /* Align children along the horizontal line with space between them */  
+  padding: 0 10px; /* Add some padding if necessary */  
+  width: 96%;
+  height: 15vh; /* change to desired percentage */
+  align-items: center;
+  position: sticky;
+  bottom: 0;
+  background-color: #515151;  
+  border-top: 2px solid #eee;
+}
+
+.chat .footer-chat .button {
+  width: 10%;
+  border:none;
+  background-color: #515151;  
+  padding: 12px 12px 12px 12px;
+  flex-shrink: 0;   
+}
+
+.button {
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 6;
+  margin: 2;
+}
+
+.button:hover {
+  background-color: #DDDDDD;
+}
+
+.chat .footer-chat .send {
+  max-width: 50%;
+}
+
+.chat .footer-chat .name {
+  margin: 0 0 0 20px;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-size: 13pt;
+  color: #515151;
+}
+
+.chat .footer-chat .right {
+  position: absolute;
+  right: 40px;
+}
+
+.write-message {
+
+  flex-grow: 1; /* Makes the textarea take up remaining space */  
+  border: none !important;
+  width: 60%;
+  padding: 10px;
+  height: 80%;
+}
+
+.write-message textarea {
+  width: 100%;  
+  height: 100%;  
+  resize: none;  /* disable resizing */
+}
+
+.footer-chat *::-webkit-input-placeholder {
+  color: #c0c0c0;
+  font-size: 13pt;
+}
+.footer-chat input *:-moz-placeholder {
+  color: #c0c0c0;
+  font-size: 13pt;
+}
+.footer-chat input *::-moz-placeholder {
+  color: #c0c0c0;
+  font-size: 13pt;
+  margin-left: 5px;
+}
+.footer-chat input *:-ms-input-placeholder {
+  color: #c0c0c0;
+  font-size: 13pt;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+/* === Chat History === */
+
+@media screen and (max-width: 600px) {  
+  .discussions {  
+    display: none;  
+  }  
+}  
+
+.discussions {
+  flex: 0 0 35%; /* New. 35% of container's width and not allowed to shrink or grow */
+  max-height: 100vh; /* Full height */
+  overflow-y: auto; /* Enable vertical scroll when content overflows */
+  background-color: #fafafa;
+}
+
+.discussions .discussion {
+  width: 100%;
+  height: 90px;
+  background-color: #fafafa;
+  border-bottom: solid 1px #e0e0e0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.discussions .search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e0e0e0;
+}
+
+.discussions .search .searchbar {
+  height: 40px;
+  background-color: #fff;
+  width: 70%;
+  padding: 0 20px;
+  border-radius: 50px;
+  border: 1px solid #eeeeee;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.discussions .search .searchbar input {
+  margin-left: 15px;
+  height: 38px;
+  width: 100%;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+}
+
+.discussions .search .searchbar *::-webkit-input-placeholder {
+  color: #e0e0e0;
+}
+.discussions .search .searchbar input *:-moz-placeholder {
+  color: #e0e0e0;
+}
+.discussions .search .searchbar input *::-moz-placeholder {
+  color: #e0e0e0;
+}
+.discussions .search .searchbar input *:-ms-input-placeholder {
+  color: #e0e0e0;
+}
+
+.discussions .message-active {
+  width: 98.5%;
+  height: 90px;
+  background-color: #fff;
+  border-bottom: solid 1px #e0e0e0;
+}
+
+.online {
+  position: relative;
+  top: 30px;
+  left: 35px;
+  width: 13px;
+  height: 13px;
+  background-color: #8bc34a;
+  border-radius: 13px;
+  border: 3px solid #fafafa;
+}
+
+.desc-contact {
+  height: 43px;
+  width: 50%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.discussions .discussion .name {
+  margin: 0 0 0 20px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 11pt;
+  color: #515151;
+}
+
+.discussions .discussion .message {
+  margin: 6px 0 0 20px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 9pt;
+  color: #515151;
+}
+
+.bubble {
+  margin-left: 15%;
+  font-family: "Open Sans", sans-serif;
+  font-size: 11px;
+  padding: 3px 8px;
+  color: #bbb;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 15px;
+}
+
+/* Print layout */
+
+@media print {
+  body * {
+    visibility: hidden;
+    background: transparent !important; 
+    color: black !important; 
+    box-shadow: none !important; 
+    text-shadow: none !important;
+    font-family: Helvetica, sans-serif;
+  }
+  #chatbox, #chatbox * {
+    visibility: visible;
+  }
+  #chatbox {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto; 
+    overflow: visible;
+  }
+}

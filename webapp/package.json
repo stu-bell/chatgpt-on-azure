@@ -1,0 +1,25 @@
+{
+  "name": "azure-chat-gpt",
+  "version": "1.0.0",
+  "author": {
+    "name": "Stuart Bell"
+  },
+  "license": "MIT",
+  "scripts": {
+    "mock": "mock-server --port 7071",
+    "func": "cd api && func start",
+    "start": "parcel serve src/*.html --no-cache",
+    "prebuild": "rimraf dist",
+    "build": "parcel build src/*.html"
+  },
+  "devDependencies": {
+    "@staticdeploy/mock-server": "^3.0.0",
+    "parcel": "^2.9.3",
+    "rimraf": "^5.0.1"
+  },
+  "dependencies": {
+    "dompurify": "^3.0.5",
+    "htmx.org": "^1.9.4",
+    "showdown": "^2.1.0"
+  }
+}

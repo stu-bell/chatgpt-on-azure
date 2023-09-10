@@ -1,0 +1,339 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.20.4.51522",
+      "templateHash": "7014748290278030423"
+    }
+  },
+  "parameters": {
+    "StaticWebAppResourceName": {
+      "type": "string",
+      "defaultValue": "[format('swa-{0}', resourceGroup().name)]",
+      "metadata": {
+        "description": "Name for Static Web App Resource"
+      }
+    },
+    "StaticWebAppRegion": {
+      "type": "string",
+      "allowedValues": [
+        "Central US",
+        "East US 2",
+        "East Asia",
+        "West Europe",
+        "West US 2"
+      ],
+      "metadata": {
+        "description": "Region for Static Web App resource"
+      }
+    },
+    "StaticWebAppSkuName": {
+      "type": "string",
+      "defaultValue": "Free",
+      "allowedValues": [
+        "Free",
+        "Standard"
+      ],
+      "metadata": {
+        "description": "Free for hobby or personal projects"
+      }
+    },
+    "StaticWebAppOverwriteConfig": {
+      "type": "bool",
+      "defaultValue": true,
+      "metadata": {
+        "description": "Static Web App Config will be overwritten with default values, unless this is set to false"
+      }
+    },
+    "AzOpenAiEndpoint": {
+      "type": "string",
+      "metadata": {
+        "description": "API endpoint for Open AI service"
+      }
+    },
+    "AzOpenAiEndpointKey": {
+      "type": "securestring",
+      "metadata": {
+        "description": "API access key for Open AI service"
+      }
+    },
+    "AzOpenAiDeploymentName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the model deployment from the Azure Open AI studio"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "[format('main-{0}', deployment().name)]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "StaticWebAppResourceName": {
+            "value": "[parameters('StaticWebAppResourceName')]"
+          },
+          "StaticWebAppRegion": {
+            "value": "[parameters('StaticWebAppRegion')]"
+          },
+          "StaticWebAppSkuName": {
+            "value": "[parameters('StaticWebAppSkuName')]"
+          },
+          "StaticWebAppOverwriteConfig": {
+            "value": "[parameters('StaticWebAppOverwriteConfig')]"
+          },
+          "AIProvider": {
+            "value": "ExistingAzureOAI"
+          },
+          "AzOpenAiEndpoint": {
+            "value": "[parameters('AzOpenAiEndpoint')]"
+          },
+          "OpenAiEndpointKey": {
+            "value": "[parameters('AzOpenAiEndpointKey')]"
+          },
+          "AzOpenAiDeploymentName": {
+            "value": "[parameters('AzOpenAiDeploymentName')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.20.4.51522",
+              "templateHash": "4089165167962660524"
+            },
+            "author": "Stuart Bell",
+            "licence": "MIT",
+            "repo": "https://github.com/stu-bell/"
+          },
+          "parameters": {
+            "AIProvider": {
+              "type": "string",
+              "defaultValue": "NewAzureOAI",
+              "allowedValues": [
+                "NewAzureOAI",
+                "ExistingAzureOAI",
+                "OpenAI"
+              ],
+              "metadata": {
+                "description": "Are you connecting to an existing OpenAI backend service or deploying a new Azure OpenAI backend service?"
+              }
+            },
+            "AzOpenAiResourceName": {
+              "type": "string",
+              "defaultValue": "[format('oai-{0}', resourceGroup().name)]",
+              "metadata": {
+                "description": "Name for Azure OpenAI service resource. Ignore if using existing OpenAI service"
+              }
+            },
+            "AzOpenAiLocation": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]",
+              "metadata": {
+                "description": "Region name for Azure OpenAI service resource. Ignore if using existing OpenAI service"
+              }
+            },
+            "AzOpenAiSkuName": {
+              "type": "string",
+              "defaultValue": "S0",
+              "metadata": {
+                "description": "Sku name for Azure OpenAI resource. Ignore if using existing OpenAI service"
+              }
+            },
+            "AzOpenAiModelName": {
+              "type": "string",
+              "defaultValue": "gpt-35-turbo-16k",
+              "metadata": {
+                "description": "https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models Ignore if using existing OpenAI service"
+              }
+            },
+            "AzOpenAiAllowedIpAddresses": {
+              "type": "array",
+              "defaultValue": [],
+              "metadata": {
+                "description": "Allowed IP addresses for Open AI. If blank, will allow any inbound request. Ignore if using an existing Open AI service"
+              }
+            },
+            "StaticWebAppResourceName": {
+              "type": "string",
+              "defaultValue": "[format('swa-{0}', resourceGroup().name)]",
+              "metadata": {
+                "description": "Name for Static Web App Resource"
+              }
+            },
+            "StaticWebAppRegion": {
+              "type": "string",
+              "allowedValues": [
+                "Central US",
+                "East US 2",
+                "East Asia",
+                "West Europe",
+                "West US 2"
+              ],
+              "metadata": {
+                "description": "Region for Static Web App resource"
+              }
+            },
+            "StaticWebAppSkuName": {
+              "type": "string",
+              "defaultValue": "Free",
+              "allowedValues": [
+                "Free",
+                "Standard"
+              ],
+              "metadata": {
+                "description": "Free for hobby or personal projects"
+              }
+            },
+            "StaticWebAppOverwriteConfig": {
+              "type": "bool",
+              "defaultValue": true,
+              "metadata": {
+                "description": "Static Web App Config will be overwritten with default values, unless this is set to false"
+              }
+            },
+            "AzOpenAiEndpoint": {
+              "type": "string",
+              "defaultValue": "https://YOUR_OPENAI_ENDPOINT.openai.azure.com/",
+              "metadata": {
+                "description": "API endpoint for Open AI service. Ignore if deploying a new OpenAI backend service"
+              }
+            },
+            "OpenAiEndpointKey": {
+              "type": "securestring",
+              "defaultValue": "",
+              "metadata": {
+                "description": "API access key for Open AI service. Ignore if deploying a new OpenAI backend service"
+              }
+            },
+            "AzOpenAiDeploymentName": {
+              "type": "string",
+              "defaultValue": "[if(equals(parameters('AIProvider'), 'NewAzureOAI'), 'azure-chat-gpt', '-')]",
+              "metadata": {
+                "description": "The name of the model deployment from the Azure Open AI studio"
+              }
+            },
+            "OpenAiModelName": {
+              "type": "string",
+              "defaultValue": "[if(equals(parameters('AIProvider'), 'OpenAI'), 'gpt-3.5-turbo', '')]",
+              "metadata": {
+                "description": "Model name: https://platform.openai.com/docs/models Ignore if using Azure OpenAI backend"
+              }
+            },
+            "StaticWebAppLocation": {
+              "type": "string",
+              "defaultValue": "[createObject('Central US', 'centralus', 'East US 2', 'eastus2', 'East Asia', 'eastasia', 'West Europe', 'westeurope', 'West US 2', 'westus2')[parameters('StaticWebAppRegion')]]",
+              "metadata": {
+                "description": "Set by parameter Static Web App Region"
+              }
+            }
+          },
+          "variables": {
+            "NewAzureOAI": "[equals(parameters('AIProvider'), 'NewAzureOAI')]",
+            "ExistingAzureOAI": "[equals(parameters('AIProvider'), 'ExistingAzureOAI')]",
+            "openAiSettings": {
+              "OPENAI_MODEL_NAME": "[parameters('OpenAiModelName')]",
+              "OPENAI_API_KEY": "[parameters('OpenAiEndpointKey')]"
+            }
+          },
+          "resources": [
+            {
+              "condition": "[variables('NewAzureOAI')]",
+              "type": "Microsoft.CognitiveServices/accounts/deployments",
+              "apiVersion": "2023-05-01",
+              "name": "[format('{0}/{1}', parameters('AzOpenAiResourceName'), parameters('AzOpenAiDeploymentName'))]",
+              "sku": {
+                "name": "Standard",
+                "capacity": 30
+              },
+              "properties": {
+                "model": {
+                  "format": "OpenAI",
+                  "name": "[parameters('AzOpenAiModelName')]",
+                  "version": "0613"
+                },
+                "versionUpgradeOption": "OnceNewDefaultVersionAvailable",
+                "raiPolicyName": "SafeOnly"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.CognitiveServices/accounts', parameters('AzOpenAiResourceName'))]"
+              ]
+            },
+            {
+              "condition": "[parameters('StaticWebAppOverwriteConfig')]",
+              "type": "Microsoft.Web/staticSites/config",
+              "apiVersion": "2022-09-01",
+              "name": "[format('{0}/{1}', parameters('StaticWebAppResourceName'), 'appsettings')]",
+              "properties": "[if(or(variables('NewAzureOAI'), variables('ExistingAzureOAI')), createObject('AI_PROVIDER', 'azure', 'AZURE_OPENAI_DEPLOYMENT_NAME', parameters('AzOpenAiDeploymentName'), 'AZURE_OPENAI_ENDPOINT', if(variables('NewAzureOAI'), reference(resourceId('Microsoft.CognitiveServices/accounts', parameters('AzOpenAiResourceName')), '2023-05-01').endpoint, parameters('AzOpenAiEndpoint')), 'AZURE_OPENAI_KEY', if(variables('NewAzureOAI'), listKeys(resourceId('Microsoft.CognitiveServices/accounts', parameters('AzOpenAiResourceName')), '2023-05-01').key1, parameters('OpenAiEndpointKey'))), variables('openAiSettings'))]",
+              "dependsOn": [
+                "[resourceId('Microsoft.CognitiveServices/accounts', parameters('AzOpenAiResourceName'))]",
+                "[resourceId('Microsoft.Web/staticSites', parameters('StaticWebAppResourceName'))]"
+              ]
+            },
+            {
+              "condition": "[variables('NewAzureOAI')]",
+              "type": "Microsoft.CognitiveServices/accounts",
+              "apiVersion": "2023-05-01",
+              "name": "[parameters('AzOpenAiResourceName')]",
+              "location": "[parameters('AzOpenAiLocation')]",
+              "sku": {
+                "name": "[parameters('AzOpenAiSkuName')]"
+              },
+              "kind": "OpenAI",
+              "properties": {
+                "customSubDomainName": "[guid(resourceGroup().name, parameters('AzOpenAiResourceName'))]",
+                "networkAcls": {
+                  "copy": [
+                    {
+                      "name": "ipRules",
+                      "count": "[length(parameters('AzOpenAiAllowedIpAddresses'))]",
+                      "input": {
+                        "value": "[replace(parameters('AzOpenAiAllowedIpAddresses')[copyIndex('ipRules')], '/32', '')]"
+                      }
+                    }
+                  ],
+                  "defaultAction": "[if(equals(length(parameters('AzOpenAiAllowedIpAddresses')), 0), 'Allow', 'Deny')]",
+                  "virtualNetworkRules": []
+                },
+                "publicNetworkAccess": "Enabled"
+              }
+            },
+            {
+              "type": "Microsoft.Web/staticSites",
+              "apiVersion": "2022-09-01",
+              "name": "[parameters('StaticWebAppResourceName')]",
+              "location": "[parameters('StaticWebAppLocation')]",
+              "sku": {
+                "name": "[parameters('StaticWebAppSkuName')]"
+              },
+              "properties": {
+                "stagingEnvironmentPolicy": "Enabled",
+                "allowConfigFileUpdates": true,
+                "enterpriseGradeCdnStatus": "Disabled"
+              }
+            }
+          ],
+          "outputs": {
+            "staticWebAppResourceId": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.Web/staticSites', parameters('StaticWebAppResourceName'))]"
+            },
+            "staticWebAppDefaultHostname": {
+              "type": "string",
+              "value": "[reference(resourceId('Microsoft.Web/staticSites', parameters('StaticWebAppResourceName')), '2022-09-01').defaultHostname]"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

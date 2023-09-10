@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="https://github.com/stu-bell">
+  <meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+
+  <link rel="stylesheet" href="./static/styles.css">
+  <link rel="stylesheet" href="./static/snackbar.css">
+  <script type="module" src="js/main.js"></script>
+  <title>Azure Chat-GPT</title>
+</head>
+
+<body>
+  <div class="container">
+    <section class="discussions" style="display: none;">
+      <!-- Discussions side panel work in progress - display:none -->
+      <div class="discussion search">
+        <div class="searchbar">
+          <i class="fa fa-search" aria-hidden="true"></i>
+          <input type="text" placeholder="Search..."></input>
+        </div>
+      </div>
+      <div class="discussion message-active">
+        <div class="desc-contact">
+          <p class="name">Chat Title</p>
+          <p class="message">Chat peak for the active chat</p>
+        </div>
+        <div class="bubble">attributes</div>
+      </div>
+      <div class="discussion">
+        <div class="desc-contact">
+          <p class="name">Chat Title</p>
+          <p class="message">Chat peak</p>
+        </div>
+        <div class="bubble">attributes</div>
+      </div>
+    </section>
+
+    <section class="chat">
+      <div class="header-chat">
+        <!-- <p class="name">Chat Title</p> -->
+        <div>
+          <a id="exportPdf" class="button clickable" tabindex="1">Export PDF</a>
+          <a id="exportTxt" class="button clickable" tabindex="2">Export Text</a>
+        </div>
+        <div class="right">
+          <span id="username" hx-swap="innerHTML" hx-get="/api/userinfo" hx-trigger="load"></span>
+          <a href="/logout" class="button" tabindex="3">Log out</a>
+          <a id="clearChat" class="button clickable" tabindex="4">Clear Chat</a>
+        </div>
+      </div>
+      <div id="chatbox" class="messages-chat" hx-get="/usage.html" hx-swap="afterbegin" hx-trigger="load">
+        <div id="snackbar"></div>
+      </div>
+      <form class="footer-chat" id="messageForm" hx-trigger="submit" hx-post="/api/sendmessage" hx-target="#chatbox" hx-swap="beforeend">
+        <div class="write-message">
+          <textarea autofocus name="message" id="messageInput" required
+            placeholder="Press shift-enter for multi line"></textarea>
+        </div>
+        <button type="submit" class="button clickable">
+          <img class="icon send" src="./static/send-icon.svg" aria-hidden="true" />
+        </button>
+        <img class="htmx-indicator" src="/src/static/spinner.svg">
+      </form>
+    </section>
+
+
+    <template id="msg-user">
+      <div class="message" data-content="" data-role="user">
+        <div class="request">
+          <div class="text"></div>
+        </div>
+      </div>
+    </template>
+
+    <template id="msg-system">
+      <hr/>
+      <div class="message" data-content="" data-role="assistant">
+        <div class="text"></div>
+      </div>
+    </template>
+</body>
+
+</html>

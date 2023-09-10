@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "StaticWebAppResourceName": {
+      "value": "swa-existing-oai"
+    },
+    "StaticWebAppRegion": {
+      "value": "West Europe"
+    },
+    "AzOpenAiEndpoint": {
+      "value": "<endpoint>"
+    },
+    "AzOpenAiEndpointKey": {
+      "value": "<key>"
+    },
+    "AzOpenAiDeploymentName": {
+      "value": "<deploymentName>"
+    }
+  }
+}

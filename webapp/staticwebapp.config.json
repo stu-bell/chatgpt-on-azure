@@ -1,0 +1,46 @@
+{
+  "routes": [
+    {
+      "route": "/",
+      "allowedRoles": ["invited"]
+    },
+    {
+      "route": "/api/*",
+      "methods": ["POST", "GET"],
+      "allowedRoles": ["invited"]
+    },
+    {
+      "route": "/login",
+      "redirect": "/.auth/login/aad"
+    },
+    {
+      "route": "/logout",
+      "redirect": "/.auth/logout"
+    },
+    {
+      "route": "/purge",
+      "redirect": "/.auth/purge/aad"
+    }
+  ],
+  "globalHeaders": {
+    "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';"
+  },
+  "mimeTypes": {
+    ".json": "text/json",
+    ".js": "application/javascript"
+  },
+  "responseOverrides": {
+    "401": {
+      "statusCode": 302,
+      "redirect": "/register"
+    },
+    "403": {
+      "statusCode": 302,
+      "redirect": "/unauthorized"
+    },
+    "404": {
+      "statusCode": 302,
+      "rewrite": "/"
+    }
+  }
+}
