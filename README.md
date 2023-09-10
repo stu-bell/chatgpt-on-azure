@@ -101,23 +101,7 @@ If anyone is aware of a better way of doing this - please let me know via GitHub
 
 In the Azure Portal, under the Keys and Endpoint menu of your Open AI resource, copy Key 1 and the Endpoint. In the Azure Open AI Studio, make a note of the model you have deployed.
 
-In the Azure Portal, under the Configuration menu of your static web app resource, add the following application settings, replacing the values on the right hand side:
-
-```
-"AZURE_OPENAI_DEPLOYMENT_NAME": "YOUR_OAI_DEPLOYMENT_NAME",
-"AZURE_OPENAI_ENDPOINT": "https://YOUR_RESOURCE_NAME.openai.azure.com/",
-"AZURE_OPENAI_KEY": "YOUR_API_KEY"
-```
-
-In addition, you'll need the following settings for Python V2 model:
-
-```
-"FUNCTIONS_WORKER_RUNTIME": "python",
-"AzureWebJobsFeatureFlags": "EnableWorkerIndexing",
-```
-
-
-
+In the Azure Portal, under the Configuration menu of your static web app resource, add the following application settings, replacing the values. Click Update. 
 
 # Develop and build
 
