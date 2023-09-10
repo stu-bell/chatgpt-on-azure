@@ -1,4 +1,3 @@
-
 # Chat GPT on Azure
 
 Front end and middleware for Azure OpenAI Service.
@@ -30,7 +29,7 @@ To deploy this app:
 1. Grant users access 
 
 ## Azure Templates
-There are three deployment options based on the type of GPT backend you want to use:
+There are three deployment options based on the type of GPT backend you want to use. Choose of the 'Deploy to Azure' options:
 
 | Backkend                    | Deploy to Azure                                                                                                                                                                                                                               | Pre-requisites                                                                                     |
 | ---                         | ---                                                                                                                                                                                                                                           | ---                                                                                                |
@@ -44,13 +43,26 @@ If you are using an existing Azure OpenAI resource, you will need the API endpoi
 
 TODO link how to get api key from azure or opeai. Also section below. Add budget alerts or api spending limits.
 
-Choose one of the deployment options below, based on whether you want to create a new Azure OpenAI resource, or whether you're using an existing one.
+### Template Parameters
 
-TODO: one click deployment links
+You'll need to select Resource Group, Region at a minimum. If using an existing backend you can provide the API key at deployment time or later.
 
-TODO template parameters for plans, ip restrictions etc
+|||
+|---|---|
+|Resource Group |Resource Group is like a folder in your Azure account that will contain the app. Give it a name you'll recognise, so you can search for it later. |
+|Region |Region specifies which data centers host your app, if you're not sure, pick the one closest to you. |
+|SKU |The pricing plan for the Azure resources. Static Web App has a free plan for personal apps. |
+|Endpoint, Endpoint Key, Model Deployment Name |If you're not creating a new Azure OpenAI resource, you'll need to provide an API endpoint, key and deployment name to an existing one. The owner of the Azure OpenAI resource should provide these.|
 
-Resource group is like a folder in your azure account that will contain the app. Give it a name you'll recognise. Region specifies which data centers host your app, if you're not sure, pick the one closest to you.
+TODO: links to pricing for SWA and OAI
+TODO: link to finding details from OAI resouce
+
+
+## Navigate to your app in the Azure Portal
+
+Once the template deployment has finished, click 'Go to Resource Group' to manage the deployed resources. 
+
+Alternatively, use the Azure Portal search bar to search for 'Static Web App' or the name of your Resource Group.
 
 ## Web app deployment with GitHub Actions
 
@@ -71,6 +83,8 @@ TODO screenshot / link
 If you prefer to deploy using Azure DevOps pipelines, use the azure-pipelines.yml file and save the deployment token as a secret pipeline variable.
 
 # Manage user access
+
+If you have a small number of users, you can manually invite users from the Azure Portal. Users will need to click the invite links to sign up.
 
 [Manually invite users](https://learn.microsoft.com/en-us/azure/static-web-apps/authentication-custom?tabs=aad%2Cinvitations#manage-roles)
 The app config assumes you'll send app user invites with a custom role called `invited`. This will only allow users you've explicitly invited to use the app. 
