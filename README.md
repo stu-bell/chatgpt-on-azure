@@ -11,7 +11,6 @@ To deploy this you will need:
 This is a personal project: it is not endorsed by Microsoft, OpenAI, my employer, or anyone else!
 
 # Architecture
-TODO: diagram + links
 
 Frontend: Azure Static Web Apps with python middleware
 
@@ -19,7 +18,7 @@ Backend: Either an Azure OpenAI resource or OpenAI API
 
 Auth: Static Web Apps user management
 
-TODO: Azure Storage
+<img src="./docs/images/architecture.png" width="500" />
 
 # Deployment
 
