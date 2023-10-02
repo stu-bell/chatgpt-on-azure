@@ -4,7 +4,7 @@ flowchart TB;
 user-->swa-->appservice
 subgraph azure[ ]
 appservice-->|Chat API|oai
-appservice-->|Conversation \nHistory\nand Logging|stg
+appservice-->|Conversation \nHistory|stg
 appservice-->|AuthN/AuthZ|aad
 azlogo
 end
