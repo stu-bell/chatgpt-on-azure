@@ -1,3 +1,5 @@
+⚠️⚠️ This repo is no longer maintained. The code may be useful for reference purposes, but if you want to deploy a custom Chat GPT on Azure, look for official projects from Microsoft. 
+
 # Chat GPT on Azure
 
 Front end and middleware for Azure OpenAI Service.
